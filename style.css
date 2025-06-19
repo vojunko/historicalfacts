@@ -1,0 +1,163 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#calendar {
+  margin-top: 240px;
+  display: flex;
+  justify-content: center; /* vystředí řádek */
+  gap: 10px; /* mezera mezi dny */
+}
+
+.day {
+  display: flex;               /* aby flexbox fungoval */
+  justify-content: center;     /* horizontální centrování */
+  align-items: center;         /* vertikální centrování */
+  background: white;
+  border: 0.5px solid #ddd;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.3s, transform 0.3s;
+  width: 250px;
+  height: 250px;
+  font-size: 80px;
+  text-align: center;
+  user-select: none;
+}
+
+.day:hover {
+  background: #e6e9e9;
+}
+
+.inactive-day {
+  background: #eee;
+  color: #c4bcbc;
+  cursor: default;
+  pointer-events: none; /* znemožní kliknutí */
+  /* přidáme animace, aby odpovídaly efektům */
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#event-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  max-width: 400px;
+  text-align: center;
+}
+
+#close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .day {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .day:hover {
+  background: #333;
+}
+
+body.dark-mode .inactive-day {
+  background: #2a2a2a;
+  color: #3d3b3b;
+}
+
+body.dark-mode .popup-content {
+  background: #2b2b2b;
+  color: #fff;
+}
+
+#toggle-theme {
+  all: unset; /* odstraní výchozí button styly – nutné! */
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  top: 30px;
+  right: 30px;
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #333;
+  color: #fff;
+
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent; /* na mobilech */
+  appearance: none;
+}
+#toggle-theme:focus,
+#toggle-theme:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Styl pro světlý režim (tlačítko tmavé) */
+#toggle-theme.light-btn {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Styl pro tmavý režim (tlačítko světlé) */
+body.dark-mode #toggle-theme {
+  background-color: #eee;
+  color: #222;
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  color: #888383;
+  margin-top: 260px;
+  width: 100%;
+}
